@@ -1,2 +1,2 @@
-# HDT Plugin Example 
+# HDT Lethal Finder Plugin
 
