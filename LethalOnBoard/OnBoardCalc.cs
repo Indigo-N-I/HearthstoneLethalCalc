@@ -68,40 +68,21 @@ namespace PluginExample
         	oppTauntHP.Sort();
         	if (attacks.Sum() <= oppTauntHP.Sum() + oppHP || attacks.Count() <= oppTauntHP.Count())
             	return false;
-        	foreach (int i in attacks)
-        	{
-            	if (oppTauntHP.Contains(i))
-            	{
-                	attacks.Remove(i);
-                	oppTauntHP.Remove(i);
-            	}
-        	}
-        	outer:  foreach (int i in oppTauntHP)
-        	{
-            	bool removed = false;
-            	for (int maxDiff = 0; maxDiff < attacks.Max(); maxDiff++)
-            	{
-                	var needToRemove = findNumbers(attacks, i, maxDiff);
-                	foreach (int removal in needToRemove)
-                	{
-                    	attacks.Remove(removal);
-                    	if (!(needToRemove.Count == 0))
-                    	{
-                        	removed = true;
-                    	}
-                	}
-                	if(removed)
-                	{
-                    	oppTauntHP.Remove(i);
-                    	goto outer;
-                	}
-            	}
+        	foreach (int i in oppTauntHP){
+        	 var attacksNeeded = findNumbers(attacks, i);
+        	 foreach(int atk in attacksNeeded){
+        	  attacks.remove(atk);
+        	 }
         	}
         	if(attacks.Sum() >= oppHP)
         	{
             	return true;
         	}
         	return false;
+    	}
+    	
+    	private static List<int> findNumbers(List<int> originalList, int wanted){
+    	 return findNumbers(originalList, {}, wanted, 0);
     	}
     	
     	private static List<int> findNumbers(List<int> originalList, List<int> included, int wanted, int over){ /*
