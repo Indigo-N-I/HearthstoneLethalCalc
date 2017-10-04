@@ -52,6 +52,7 @@
     <Compile Include="..\..\..\..\Documents\Visual Studio 2017\Projects\Curvy.cs">
       <Link>Curvy.cs</Link>
     </Compile>
+    <Compile Include="Attackers.cs" />
     <Compile Include="CurvyList.xaml.cs">
       <DependentUpon>CurvyList.xaml</DependentUpon>
     </Compile>
